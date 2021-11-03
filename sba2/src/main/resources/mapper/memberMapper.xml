@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.example.sba.mapper.MemberMapper">
+     <select id="getName" resultType="java.lang.String" >
+		select MNAME from MEMBERS where EMAIL = #{email}
+    </select>
+    <select id="getMember" resultType="com.example.sba.domain.Member" >
+		select * from MEMBERS where EMAIL = #{email}
+    </select>    
+    <insert id="createMember" parameterType="java.util.HashMap">
+    	INSERT INTO MEMBERS(EMAIL,PWD,MNAME,CRE_DATE,MOD_DATE) 
+		VALUES(#{EMAIL}, #{PWD}, #{MNAME}, NOW(), NOW())
+    </insert>
+
+</mapper>
